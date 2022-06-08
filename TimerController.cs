@@ -96,7 +96,7 @@ namespace Gooligames.Timers
                 }
                 catch (TaskCanceledException)
                 {
-                    //token have be respond for Delay(), but is application have stoped, there is TaskCanceledException...
+                    //token have be respond for Delay(), but if application have stoped, there is TaskCanceledException...
                 }
 
 
@@ -110,7 +110,7 @@ namespace Gooligames.Timers
             }
 
             OnFinishedEvent?.Invoke();
-
+            runningTimers.Remove(this);
             TimerSaver.DeleteSave(key);
 
             return true;
